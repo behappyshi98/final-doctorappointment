@@ -102,7 +102,7 @@ Route::get('doctor/{id}/e', [App\Http\Controllers\DoctorController::class, 'edit
 Route::put('doctor/{id}/e', [App\Http\Controllers\DoctorController::class, 'update']);
 Route::get('doctor/{id}/delete', [App\Http\Controllers\DoctorController::class, 'destroy']);
 
-
+Route::get('search_doctor', [App\Http\Controllers\DoctorController::class, 'search_doctor']);
 
 
 

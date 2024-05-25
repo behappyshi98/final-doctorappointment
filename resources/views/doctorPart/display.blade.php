@@ -10,7 +10,7 @@
 <div class="container">
 <div class="col-md-9">
 
-    <div class="content d-flex justify-content-center align-items-center" style="height: 600px;">
+    <div class="content d-flex justify-content-center align-items-center" style="height: 960%;">
         <div>
 
 
@@ -51,9 +51,10 @@
                     <th>#</th>
                     <th>Patient Name</th>
                     <th>Contact Number</th>
+                    <th> Email</th>
                     <th>Doctor</th>
-                    <th>Symptoms</th>
-                    <th>blood group</th>
+                    <th>Department</th>
+
                     <th>Appointment Date</th>
                     <th>Contact Preference</th>
                     <th>Action</th>
@@ -65,9 +66,10 @@
                     <td>{{ ++$key }}</td>
                     <td>{{ $items->patient_name }}</td>
                     <td>{{ $items->contact_number }}</td>
+                    <td>{{ $items->email }}</td>
                     <td>{{ $items->choose_doctor }}</td> <!-- Assuming 'doctor' is the relationship method -->
-                    <td>{{ $items->symptoms }}</td>
-                    <td>{{ $items->blood_group }}</td>
+                    <td>{{ $items->department }}</td>
+
                     <td>{{ $items->appointment_date }}</td>
                     <td>{{ $items->contact_preference }}</td>
 

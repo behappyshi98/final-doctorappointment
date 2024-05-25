@@ -17,11 +17,12 @@ return new class extends Migration
            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
            // $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
             $table->string('contact_number');
+            $table->string('email')->unique();
             $table->string('choose_doctor');
             //$table->unsignedBigInteger('user_id');
             //$table->unsignedBigInteger('doctor_id');
-            $table->text('symptoms');
-            $table->string('blood_group');
+            $table->string('department');
+           // $table->string('blood_group');
             $table->date('appointment_date');
             $table->string('contact_preference');
             $table->timestamps();

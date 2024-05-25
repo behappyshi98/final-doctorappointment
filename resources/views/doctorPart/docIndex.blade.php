@@ -29,6 +29,7 @@
                                 <th>Room Number</th>
 
                                 <th>Appointment Date</th>
+                                <th>Limit</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
                                 <th>Action</th>
@@ -49,6 +50,7 @@
                                 <td>{{ $doctor->room_number }}</td>
 
                                 <td>{{ $doctor->appointment_date }}</td>
+                                <td>{{ $doctor->maximum_appointment }}</td>
                                 <td>{{ $doctor->start_time }}</td>
                                 <td>{{ $doctor->end_time }}</td>
 

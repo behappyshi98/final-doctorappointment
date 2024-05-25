@@ -56,7 +56,11 @@
                             <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" class="form-control" required>
                         </div>
 
+                        <div class="form-row">
 
+                                <input type="email" name="email" id="email" placeholder="Enter Email" class="form-control"  required>
+
+                        </div>
 
 
 
@@ -77,28 +81,26 @@
 
 
 
-
                         <div class="form-row">
-                            <textarea placeholder="Symptoms" name='symptoms' id="symptoms" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-row">
-                            <label for="blood_group">Blood Group</label>
-                            <select class="form-control" name='blood_group' required>
 
+                            <select class="form-control" name="department" required>
+                                <option value="" disabled selected>Select Department </option>
 
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="AB">AB</option>
-                                <option value="O">O</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Hepatology">Hepatology</option>
 
-
-
-                                <!-- Add more options as needed -->
                             </select>
                         </div>
+
+
+
+
+
+
                         <div class="form-row">
-                            <label for="blood_group">Relevant Appointment Date Of Doctor</label><br>
-                            <label for="blood_group" style="color: rgb(216, 147, 43); font-family:'Times New Roman', Times, serif;">Maximum Appointments are 10 for each date</label>
+                            <label for="date">Relevant Appointment Date Of Doctor</label><br>
+                            <label for="date" style="color: rgb(216, 147, 43); font-family:'Times New Roman', Times, serif;">Maximum Appointments are 10 for each date</label>
                             <input type="date" name='appointment_date' id="appointment_date" placeholder="Appointment Date" class="form-control" required>
                         </div>
                         <div class="form-row">

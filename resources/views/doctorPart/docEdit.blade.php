@@ -29,18 +29,30 @@
                             </div>
                         </div>
 
+
+
                         <div class="mb-3 row">
-                            <label for="specialist" class="col-md-4 col-form-label text-md-end">Specialist</label>
+                            <label for="specialist" class="col-md-4 col-form-label text-md-end">specialist</label>
                             <div class="col-md-8">
-                                <input type="text" name="specialist" id="specialist" class="form-control" value="{{ $doctor->specialist }}" />
+                                <select name="specialist" id="specialist" class="form-select" required>
+                                    <option value="" disabled selected> specialist</option>
+                                    <option value="Neurologist">Neurologist</option>
+                                    <option value="Hematologist">Hematologist</option>
+                                    <option value="cardiologist">cardiologist</option>
+
+                                </select>
                                 @error('specialist') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+
+
+
 
                         <div class="mb-3 row">
                             <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
                             <div class="col-md-8">
                                 <select name="gender" id="gender" class="form-select" >
+                                    <option value="" disabled selected> Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
 
@@ -96,6 +108,18 @@
                                 @error('appointment_date') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+
+
+
+                        <div class="mb-3 row">
+                            <label for="maximum_appointment" class="col-md-4 col-form-label text-md-end">maximum appointment</label>
+                            <div class="col-md-8">
+                                <input type="number" name="maximum_appointment" id="maximum_appointment" class="form-control" value="{{ old('maximum_appointment') }}" required>
+                                @error('maximum_appointment') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+
+
 
                         <div class="mb-3 row">
                             <label for="start_time" class="col-md-4 col-form-label text-md-end">Start Time</label>

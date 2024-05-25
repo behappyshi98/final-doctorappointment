@@ -21,6 +21,7 @@ class Doctor extends Model
         'hospital',
         'room_number',
         'appointment_date',
+        'maximum_appointment',
         'start_time',
         'end_time',
     ];

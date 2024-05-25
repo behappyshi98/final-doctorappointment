@@ -9,10 +9,27 @@
             <div class="card">
 
 
+
+
+
                 <div class="card-header">
                     <h4>Doctors profile
-                        <a href="{{ url('/') }}" class="btn btn-primary float-end">Back</a>
+
                     </h4>
+
+
+                    <div class="btn btn-primary float-end">
+                        <form action="search_doctor" method="GET">
+                            <input type="text" name="search">
+                            <button type="submit">search</button>
+                            <a href="{{ url('/') }}" class=" btn btn-primary ">Back</a>
+                        </form>
+
+
+
+                    </div>
+
+
                 </div>
                 <div class="card-body">
                     @if (session('status'))

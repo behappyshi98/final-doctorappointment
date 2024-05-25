@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('contact_number')->nullable();
             $table->string('user_type')->default('user');
 
             $table->date('dateofbirth')->nullable();
@@ -36,7 +37,7 @@ return new class extends Migration
     {
        /* Schema::dropIfExists('users');*/
        Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn(['dateofbirth', 'gender', 'address', 'contact']);
+        $table->dropColumn(['dateofbirth', 'gender', 'address', 'contact_number']);
 
     });
 

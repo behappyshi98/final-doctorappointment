@@ -19,6 +19,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>contact number</th>
                                 <th>DOB</th>
                                 <th>Gender</th>
                                 <th>Address</th>
@@ -32,6 +33,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ $user->contact_number }}</td>
                                 <td>{{ $user->dateofbirth }}</td>
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->address }}</td>

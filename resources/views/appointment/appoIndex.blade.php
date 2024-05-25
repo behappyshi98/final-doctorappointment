@@ -53,9 +53,10 @@
                     <th>#</th>
                     <th>Patient Name</th>
                     <th>Contact Number</th>
+                    <th> Email</th>
                     <th>Doctor</th>
-                    <th>Symptoms</th>
-                    <th>blood group</th>
+                    <th>Department</th>
+
                     <th>Appointment Date</th>
                     <th>Contact Preference</th>
                     <th>Action</th>
@@ -67,9 +68,10 @@
                     <td>{{ $appointment->id }}</td>
                     <td>{{ $appointment->patient_name }}</td>
                     <td>{{ $appointment->contact_number }}</td>
+                    <td>{{ $appointment->email }}</td>
                     <td>{{ $appointment->choose_doctor }}</td> <!-- Assuming 'doctor' is the relationship method -->
-                    <td>{{ $appointment->symptoms }}</td>
-                    <td>{{ $appointment->blood_group }}</td>
+                    <td>{{ $appointment->department }}</td>
+
                     <td>{{ $appointment->appointment_date }}</td>
                     <td>{{ $appointment->contact_preference }}</td>
 

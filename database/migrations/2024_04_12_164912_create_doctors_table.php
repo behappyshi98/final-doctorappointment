@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('hospital');
             $table->string('room_number');
             $table->date('appointment_date');
+            $table->integer('maximum_appointment');
             $table->time('start_time');
             $table->time('end_time');
 

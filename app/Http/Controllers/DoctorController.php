@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 
 use Illuminate\Http\Request;
+use DB;
+
+
 
 class DoctorController extends Controller
 {
@@ -30,7 +33,7 @@ class DoctorController extends Controller
 
 
 
-        
+
 
         $request->validate([
             'name' => 'required',
@@ -42,6 +45,7 @@ class DoctorController extends Controller
             'hospital' => 'required',
             'room_number' => 'required',
             'appointment_date' => 'required|date',
+            'maximum_appointment' => 'required',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
@@ -146,6 +150,27 @@ public function heroshow()
 
 
     }
+
+
+
+
+
+    public function search_doctor(Request $request)
+    {
+
+         $data=$request->input('search');
+
+         $docs = DB::table('doctors')->where('name' , 'like' , '%'. $data. '%')->get();
+         return view('doctorPart.profile',compact('docs'));
+
+
+    }
+
+
+
+
+
+
 
 
 

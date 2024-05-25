@@ -6,11 +6,13 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use DB;
 
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+
 
 class AppointmentController extends Controller
 {
@@ -147,15 +149,13 @@ public function search(Request $request)
      {
 
 
-
-
-       $validatedData= $request->validate([
+        $validatedData= $request->validate([
             'patient_name' => 'required|string|max:255',
             'contact_number' => 'required|string|max:10',
-
+            'email' => 'required|email',
             'choose_doctor' => 'required',
-            'symptoms' => 'required|string',
-            'blood_group' => 'required|string|max:3',
+            'department' => 'required',
+           // 'blood_group' => 'required|string|max:3',
            'appointment_date' => 'required|date',
             'contact_preference' => 'required|string|in:email,phone',
 
@@ -191,10 +191,11 @@ public function search(Request $request)
 
             'patient_name' => $validatedData['patient_name'],
             'contact_number' => $validatedData['contact_number'],
+            'email' => $validatedData['email'],
 
             'choose_doctor' => $validatedData['choose_doctor'],
-            'symptoms' => $validatedData['symptoms'],
-            'blood_group' => $validatedData['blood_group'],
+            'department' => $validatedData['department'],
+            //'blood_group' => $validatedData['blood_group'],
            'appointment_date' => $validatedData['appointment_date'],
             'contact_preference' => $validatedData['contact_preference'],
 
@@ -209,7 +210,9 @@ public function search(Request $request)
 
 
 
+
         return redirect()->route('index')->with('success','appointment created succsessfully');
+
 
 
 
