@@ -17,6 +17,13 @@ class DoctorController extends Controller
         return view('doctorPart.docIndex' ,compact('doctors'));
     }
 
+    public function indexdoc()
+    {
+        $tors=Doctor::get();
+        return view('appointment.home' ,compact('tors'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -60,6 +67,8 @@ class DoctorController extends Controller
 
         Doctor::create($requestData);
 
+        //$doctorId = $doctor->id;
+
 
         return redirect('doctor/c')->with('status','doctor created');
 
@@ -75,6 +84,8 @@ class DoctorController extends Controller
     $docs = Doctor::all();
     return view('doctorPart.profile', compact('docs'));
 }
+
+
 
 public function heroshow()
 {

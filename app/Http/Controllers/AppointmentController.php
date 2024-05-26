@@ -148,6 +148,20 @@ public function search(Request $request)
      public function store(Request $request)
      {
 
+        if (!auth()->check()) {
+            // Display a message and redirect the user
+            return redirect()->back()->with('error', 'You need to be logged in to create an appointment.');
+        }
+
+        $userId = auth()->user()->id;
+        //dd($userId);
+
+        //$doctorId = $request->input('choose_doctor_id');
+        //dd($doctorId);
+        $doctorId = $request->input('choose_doctor_id');
+        $chooseDoctor = $request->input('choose_doctor_name');
+        //$chooseDoctor = $request->input('choose_doctor');
+
 
         $validatedData= $request->validate([
             'patient_name' => 'required|string|max:255',
@@ -185,7 +199,12 @@ public function search(Request $request)
 
 
 
+
+
         Appointment::create([
+
+            'user_id' => $userId,
+            'doctor_id' => $doctorId,
 
             'appointment_date' => $appointmentDate,
 
@@ -193,7 +212,7 @@ public function search(Request $request)
             'contact_number' => $validatedData['contact_number'],
             'email' => $validatedData['email'],
 
-            'choose_doctor' => $validatedData['choose_doctor'],
+            'choose_doctor'  => $chooseDoctor,
             'department' => $validatedData['department'],
             //'blood_group' => $validatedData['blood_group'],
            'appointment_date' => $validatedData['appointment_date'],

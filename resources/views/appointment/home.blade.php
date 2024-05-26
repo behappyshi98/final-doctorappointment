@@ -67,9 +67,30 @@
 
 
 
-                       <div class="form-row">
+                        <div class="form-row">
+                            <label for="choose_doctor">Choose Doctor:</label>
+                            <select class="form-control" name="choose_doctor" id="choose_doctor" required>
+                                @foreach($tors as $tor)
+                                    <option value="{{ $tor->id }}" data-name="{{ $tor->name }}">{{ $tor->name }}</option>
+                                @endforeach
+                            </select>
+                            <input type="hidden" name="choose_doctor_id" id="choose_doctor_id">
+                            <input type="hidden" name="choose_doctor_name" id="choose_doctor_name">
+                        </div>
 
+
+
+                    <!--<div class="form-row">
+                        <label for="choose_doctor">Choose Doctor:</label>
                             <select class="form-control" name="choose_doctor" required>
+
+
+                                @foreach($tors as $tor)
+                                <option value="{{ $tor->name }}">{{ $tor->name }}</option>
+
+                            @endforeach
+
+
                                 <option value="" disabled selected>Select Doctor</option>
 
                                 <option value="Dr. fathima amra">Dr. fathima amra</option>
@@ -77,16 +98,29 @@
                                 <option value="Dr. Kalpana Munasinghe">Dr. Kalpana Munasinghe</option>
 
                             </select>
-                        </div>
+
+                            @foreach($tors as $tor)
+                            <input type="hidden" name="choose_doctor_id" value="{{ $tor->id }}">
+                             @endforeach
+                    </div>-->
+
+
+
+
+
+
+
 
 
 
                         <div class="form-row">
 
                             <select class="form-control" name="department" required>
-                                <option value="" disabled selected>Select Department </option>
 
-                                <option value="Neurology">Neurology</option>
+                               <option value="" disabled selected>Select Department </option>
+
+
+                                 <option value="Neurology">Neurology</option>
                                 <option value="Cardiology">Cardiology</option>
                                 <option value="Hepatology">Hepatology</option>
 
@@ -117,6 +151,28 @@
                         </div>
 
                     </form>
+
+
+                    <script>
+                        // Add event listener to the select element
+                        document.getElementById('choose_doctor').addEventListener('change', function() {
+                            // Get the selected option
+                            var selectedOption = this.options[this.selectedIndex];
+                            // Get the doctor's ID and name from the selected option's attributes
+                            var doctorId = selectedOption.value;
+                            var doctorName = selectedOption.getAttribute('data-name');
+                            // Set the value of the hidden input fields to the selected doctor's ID and name
+                            document.getElementById('choose_doctor_id').value = doctorId;
+                            document.getElementById('choose_doctor_name').value = doctorName;
+                        });
+                    </script>
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -124,5 +180,6 @@
     </div>
 </div>
 
+<script src="myfile/vendor/bootstrap/js/bootstrap.js"></script>
 
 @endsection

@@ -83,6 +83,8 @@ Route::get('/doctordash', [App\Http\Controllers\HomeController::class, 'doctorHo
 
 //======================== =========doctor crud============================
 
+Route::get('home', [App\Http\Controllers\DoctorController::class, 'indexdoc'])->name('home');
+
 Route::get('doctor', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor');
 Route::get('doctor/c', [App\Http\Controllers\DoctorController::class, 'create']);
 Route::post('doctor/c', [App\Http\Controllers\DoctorController::class, 'store'])->name('doctor/c');

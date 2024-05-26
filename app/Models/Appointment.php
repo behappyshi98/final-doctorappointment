@@ -13,13 +13,14 @@ class Appointment extends Model
 
 
     protected $fillable = [
+        'user_id',
+        'doctor_id',
+        'appointment_date',
         'patient_name',
         'contact_number',
         'email',
-        'choose_doctor',
+        'choose_doctor', // Add choose_doctor to the fillable array
         'department',
-        //'blood_group',
-        'appointment_date',
         'contact_preference',
     ];
 
