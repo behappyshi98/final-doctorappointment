@@ -40,9 +40,15 @@ Route::post('home', [App\Http\Controllers\AppointmentController::class, 'index']
 Route::get('list', [App\Http\Controllers\AppointmentController::class, 'listview'])->name('list');
 
 
+Route::get('indexadmindoc', [AppointmentController::class, 'indexadmindoc']);
+
+
 Route::get('search_data', [App\Http\Controllers\AppointmentController::class, 'search_data']);
 
 Route::get('search', [App\Http\Controllers\AppointmentController::class, 'search']);
+
+//indexdoctordoc
+Route::get('indexdoctordoc', [AppointmentController::class, 'indexdoctordoc']);
 
 
 Route::get('/show', [App\Http\Controllers\AppointmentController::class, 'show'])->name('show');
@@ -79,7 +85,8 @@ Route::get('/doctordash', [App\Http\Controllers\HomeController::class, 'doctorHo
 
 
 
-
+//indexadmindoc
+//Route::get('search_data', [App\Http\Controllers\AppointmentController::class, 'indexadmindoc']);
 
 //======================== =========doctor crud============================
 

@@ -57,6 +57,7 @@
                               <p class="card-text">Contact Number:  <b>{{ $doc->contact_number }}</b></p>
                               <p class="card-text">Hospital:  <b>{{ $doc->hospital }}</b></p>
                               <p class="card-text"><small class="text-body-secondary">Appointment Date:  <b>{{ $doc->appointment_date }}</b></small></p>
+                              <p class="card-text">maximum appointment:  <b>{{ $doc->maximum_appointment }}</b></p>
                               <p class="card-text">Start time:  <b>{{ $doc->start_time }}</b>AM  |  End time:  <b>{{ $doc->end_time }}</b>PM</p>
 
 

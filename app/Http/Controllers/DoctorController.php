@@ -24,6 +24,12 @@ class DoctorController extends Controller
     }
 
 
+
+   
+
+
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -136,6 +142,7 @@ public function heroshow()
         'hospital' => $request->hospital,
         'room_number' => $request->room_number,
         'appointment_date' => $request->appointment_date,
+        'maximum_appointment' => $request->maximum_appointment,
         'start_time' => $request->start_time,
         'end_time' => $request->end_time,
     ]);

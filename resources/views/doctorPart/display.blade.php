@@ -16,12 +16,15 @@
 
         <h2>Appointment details</h2>
 
-        <form action="search" method="GET">
+        <form action="{{ url('search') }}" method="GET">
             <select name="doctor_name">
                 <option value="" disabled selected>Select Doctor</option>
-                <option value="Dr. fathima amra">Dr. fathima amra</option>
-                <option value="Dr. Sudarshana Herath">Dr. Sudarshana Herath</option>
-                <option value="Dr. Kalpana Munasinghe">Dr. Kalpana Munasinghe</option>
+
+                @foreach( $admindocs as  $admindoc)
+                <option value="{{ $admindoc->name }}">{{ $admindoc->name }}</option>
+
+                @endforeach
+
             </select>
             <input type="date" name="appointment_date">
             <button type="submit" style="background-color: green; color: white;" >Search</button>

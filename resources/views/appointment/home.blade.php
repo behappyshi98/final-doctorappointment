@@ -66,11 +66,12 @@
 
 
 
-
                         <div class="form-row">
-                            <label for="choose_doctor">Choose Doctor:</label>
+
                             <select class="form-control" name="choose_doctor" id="choose_doctor" required>
+                                <option value="" disabled selected>Choose Doctor </option>
                                 @foreach($tors as $tor)
+
                                     <option value="{{ $tor->id }}" data-name="{{ $tor->name }}">{{ $tor->name }}</option>
                                 @endforeach
                             </select>
@@ -134,7 +135,7 @@
 
                         <div class="form-row">
                             <label for="date">Relevant Appointment Date Of Doctor</label><br>
-                            <label for="date" style="color: rgb(216, 147, 43); font-family:'Times New Roman', Times, serif;">Maximum Appointments are 10 for each date</label>
+                            <label for="date" style="color: rgb(216, 147, 43); font-family:'Times New Roman', Times, serif;">Maximum Appointments are having for each date</label>
                             <input type="date" name='appointment_date' id="appointment_date" placeholder="Appointment Date" class="form-control" required>
                         </div>
                         <div class="form-row">

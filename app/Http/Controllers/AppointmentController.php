@@ -20,11 +20,31 @@ class AppointmentController extends Controller
 
     public function listview()
     {
-
-       $appointments = Appointment::get();
-
-     return view('appointment.appoIndex', compact('appointments'));
+        $appointments = Appointment::get();
+        $admindocs = Doctor::get(); // To populate the dropdown when listing appointments
+        return view('appointment.appoIndex', compact('appointments', 'admindocs'));
    }
+
+
+
+   public function show()
+   {
+       try {
+
+           $appodisplay = Appointment::all();
+           $admindocs = Doctor::get();
+           return view('doctorPart.display', compact('appodisplay', 'admindocs'));
+
+
+       } catch (\Exception $e) {
+           // Log the error or handle it as needed
+           return back()->withError($e->getMessage());
+       }
+   }
+
+
+
+
 
 
 
@@ -34,6 +54,24 @@ class AppointmentController extends Controller
       return view('appointment.home');
 
    }
+
+
+
+   public function indexadmindoc()
+   {
+    $admindocs = Doctor::get();
+    $appointments = Appointment::get(); // To display all appointments initially
+    return view('appointment.appoIndex', compact('admindocs', 'appointments'));
+   }
+
+
+   public function indexdoctordoc()
+   {
+    $admindocs = Doctor::get();
+    $appodisplay = Appointment::all(); // To display all appointments initially
+    return view('doctorPart.display', compact('admindocs', 'appodisplay'));
+   }
+
 
 
 
@@ -53,9 +91,9 @@ class AppointmentController extends Controller
     }
 
     $appointments = $query->get();
+    $admindocs = Doctor::get(); // To keep the dropdown populated after search
 
-    return view('appointment.appoIndex', compact('appointments'));
-
+    return view('appointment.appoIndex', compact('appointments', 'admindocs'));
 }
 
 
@@ -77,8 +115,9 @@ public function search(Request $request)
     }
 
     $appodisplay = $query->get();
+    $admindocs = Doctor::get();
 
-    return view('doctorPart.display', compact('appodisplay'));
+    return view('doctorPart.display', compact('appodisplay', 'admindocs'));
 
 }
 
@@ -148,6 +187,7 @@ public function search(Request $request)
      public function store(Request $request)
      {
 
+
         if (!auth()->check()) {
             // Display a message and redirect the user
             return redirect()->back()->with('error', 'You need to be logged in to create an appointment.');
@@ -173,10 +213,9 @@ public function search(Request $request)
            'appointment_date' => 'required|date',
             'contact_preference' => 'required|string|in:email,phone',
 
-
-
-
         ]);
+
+
 
 
         $appointmentDate = Carbon::parse($validatedData['appointment_date']);
@@ -187,14 +226,40 @@ public function search(Request $request)
         }
 
 
-        $existingAppointmentsCount = Appointment::whereDate('appointment_date',$appointmentDate)->count();
+
+        $doctor = Doctor::find($doctorId);
+        if (!$doctor) {
+            return back()->with('error', 'Doctor not found');
+        }
+        //$appointmentLimit = $doctor->appointment_limit;
+        $maximumAppointment = $doctor->maximum_appointment;
+
+        // Count existing appointments for the doctor on the given date
+        $existingAppointmentsCount = Appointment::where('doctor_id', $doctorId)
+                                                ->whereDate('appointment_date', $appointmentDate)
+                                                ->count();
+
+        if ($existingAppointmentsCount  >= $maximumAppointment ) {
+            return back()->with('error', 'Maximum appointments limit reached for this date');
+        }
+
+
+
+
+
+
+
+
+
+
+       /* $existingAppointmentsCount = Appointment::whereDate('appointment_date',$appointmentDate)->count();
 
         $appointmentLimit=10;
         if($existingAppointmentsCount >= $appointmentLimit){
 
 
             return back()->with('error','Maximum Appointments are 10 for this date ');
-        }
+        }*/
 
 
 
@@ -219,15 +284,7 @@ public function search(Request $request)
             'contact_preference' => $validatedData['contact_preference'],
 
 
-
-
         ]);
-
-
-
-
-
-
 
 
         return redirect()->route('index')->with('success','appointment created succsessfully');
@@ -308,16 +365,7 @@ public function search(Request $request)
 
 
 
-        public function show()
-        {
-            try {
-                $appodisplay = Appointment::all();
-                return view('doctorPart.display', compact('appodisplay'));
-            } catch (\Exception $e) {
-                // Log the error or handle it as needed
-                return back()->withError($e->getMessage());
-            }
-        }
+
 
 
 
