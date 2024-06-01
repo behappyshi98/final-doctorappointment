@@ -59,6 +59,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>user id</th>
                     <th>Patient Name</th>
                     <th>Contact Number</th>
                     <th> Email</th>
@@ -74,6 +75,7 @@
                 @foreach($appointments as $appointment)
                 <tr>
                     <td>{{ $appointment->id }}</td>
+                     <td>{{ $appointment->user_id }}</td>
                     <td>{{ $appointment->patient_name }}</td>
                     <td>{{ $appointment->contact_number }}</td>
                     <td>{{ $appointment->email }}</td>

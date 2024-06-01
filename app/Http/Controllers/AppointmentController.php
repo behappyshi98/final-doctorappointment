@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 
 
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentConfirmed;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
@@ -266,7 +267,7 @@ public function search(Request $request)
 
 
 
-        Appointment::create([
+        $appointment = Appointment::create([
 
             'user_id' => $userId,
             'doctor_id' => $doctorId,
@@ -285,6 +286,10 @@ public function search(Request $request)
 
 
         ]);
+
+
+
+        Mail::to($appointment->email)->send(new AppointmentConfirmed($appointment));
 
 
         return redirect()->route('index')->with('success','appointment created succsessfully');
