@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -20,6 +21,14 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('hero');
 });
+
+
+Route::post('/', [ContactController::class, 'send'])->name('contact.send');
+
+
+
+
+
 
 
 //==========================auth===============
